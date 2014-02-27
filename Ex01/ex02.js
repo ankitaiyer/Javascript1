@@ -1,4 +1,4 @@
-var fib_list = [];
+//var fib_list = [];
 //A function that retuns a list of Fib numbers that go upto max
 function fib_set(max) {
     if (max > 1) {
@@ -24,30 +24,30 @@ function isEven(number) {
 }
 
 //A function returns ONLY even numbers from the given list
-
-function listEvenFib(list){
-    for (var i =0; i < fib_list.length; i++) {
-        if(isEven(fib_list[i])) {
-            fib_list_even.push(fib_list[i]);
+function filter(fn, list){
+    var new_list = [];
+    // loop though list, not fib_list
+    for (var i =0; i < list.length; i++) {
+        // Don't call isEven here, call the fn
+        if(fn(list[i])) {
+            // append to the new_list
+            new_list.push(list[i]);
         }
     }
-    console.log(("Even Fib numbers are: " + fib_list_even));
-    return fib_list_even;
+    console.log(("Even Fib numbers are: " + new_list));
+    // return the new_list
+    return new_list;
 }
 
 //A function that adds up all the even fib numbers
+function sum(list) {
+    var mySum = 0;
 
-function sumEvenNumbers(list) {
-    for (var i=0; i < fib_list_even.length; i++) {
-        sum = sum + fib_list_even[i];
+    // use list, not fib_list
+    for (var i=0; i < list.length; i++) {
+        mySum = mySum + list[i];
     }
-    return sum;
+    return mySum;
 }
 
-var max = 2;
-sum = 0;
-fib_list_even = [];
-//console.log(findEvenOrOdd(45));
-// console.log("Fib Numbers till " + max + " are: " + fib_set(max));
-// console.log(("Even Fib numbers are: " + listEvenFib(fib_set(max))));
-console.log("Sum of even fib numbers is " + sumEvenNumbers(listEvenFib(fib_set(max))));
+console.log("Sum of even fib numbers is " + sum(filter(isEven,fib_set(60))));
