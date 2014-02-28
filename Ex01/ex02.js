@@ -1,4 +1,4 @@
-//var fib_list = [];
+
 //A function that retuns a list of Fib numbers that go upto max
 function fib_set(max) {
     if (max > 1) {
