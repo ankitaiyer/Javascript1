@@ -11,12 +11,21 @@ var bookList = function(booksRead,booksNotRead,bookShelf){
     this.booksNotRead = booksNotRead || "0";
     console.log(bookShelf);
     this.bookShelf = bookShelf || "no books on shelf";
+    this.nextBook = function(bookShelf) {
+        //console.log(this.bookShelf);
+        return bookShelf[1];
+    };
 };
 
 
-var firstBook = new book("title1","genre1","Author1",true, "");
-console.log("The book is : " + firstBook.bookTitle + " " + firstBook.genre + " " + firstBook.author + " " + firstBook.read +" " + firstBook.readDate);
+var theLordOfTheRings = new book("theLordOfTheRings","fiction","J.R.R",true, "");
+var catchingFire = new book("catchingFire", "mystery", "Suzzana Collins",false, "");
 
-var mylist = new bookList("2", "3", "[A,B]");
+
+
+
+var mylist = new bookList(1,1, "[theLordOfTheRings, catchingFire]");
 console.log("The books Read and Unread are: " + mylist.booksRead + " AND "+ mylist.booksNotRead);
 console.log("The bookshelf is : " + mylist.bookShelf);
+console.log("********************************************");
+console.log("The next book to read is: " + mylist.nextBook(mylist.bookShelf));
